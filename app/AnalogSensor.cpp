@@ -2,7 +2,7 @@
 #include <numeric>
 #include <vector>
 
-AnalogSensor::AnalogSensor(unsigned int samples)
+AnalogSensor::AnalogSensor(int samples)
     : mSamples(samples)
 {
 }
@@ -15,7 +15,8 @@ int AnalogSensor::Read()
 {
     std::vector<int> *readings = new std::vector<int>(mSamples, 10);
 
-    double result = std::accumulate( readings->begin(), readings->end(), 0.0 ) / readings->size();
+    int result = std::accumulate( readings->begin(), readings->end(), 0.0 ) / mSamples;
+
     return result;
 }
 
